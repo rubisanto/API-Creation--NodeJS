@@ -13,5 +13,20 @@ router.get("/", (req, res) => {
   });
 });
 
+// ajouter un post
+router.post("/", (req, res) => {
+  const newRecord = new PostsModel({
+    author: req.body.author,
+    message: req.body.message,
+  });
+  newRecord.save((err, docs) => {
+    if (!err) {
+      res.send(docs);
+    } else {
+      console.log("Error creating new data : " + err);
+    }
+  });
+});
+
 // exporter routeur
 module.exports = router;
