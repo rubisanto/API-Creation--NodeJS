@@ -55,5 +55,19 @@ router.put("/:id", (req, res) => {
   );
 });
 
+// supprimer un post
+router.delete("/:id", (req, res) => {
+  // interroger si l'id est valide
+  if (!ObjectID.isValid(req.params.id)) {
+    return res.status(400).send("ID unknown : " + req.params.id);
+  }
+
+  //supprimer dans le model
+  PostsModel.findByIdAndRemove(req.params.id, (err, docs) => {
+    if (!err) res.send(docs);
+    else console.log("Delete error : " + err);
+  });
+});
+
 // exporter routeur
 module.exports = router;
