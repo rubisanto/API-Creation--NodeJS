@@ -12,3 +12,7 @@ after: "npm i -s mongoose"
 after: npm i -s body-parser
 
 after: download on net "postman"
+
+<!-- pour rendre l'api accessible -->
+
+after: npm i -s cors
